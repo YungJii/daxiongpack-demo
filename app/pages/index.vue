@@ -178,13 +178,13 @@ async function togglePlay() {
           <figure class="proof-band">
             <figcaption><span>01 / Quality assurance</span><strong>Business licence, food-contact, ISO and intellectual property documentation</strong></figcaption>
             <div class="proof-image-scroller" tabindex="0" aria-label="Scroll to inspect Daxiong Pack certificates">
-              <img :src="assetUrl('/media/certifications-wide.jpg')" alt="Daxiong Pack quality commitments and framed certification documents" width="1920" height="320" loading="eager" fetchpriority="low">
+              <img :src="assetUrl('/media/certifications-wide.jpg')" alt="Daxiong Pack quality commitments and framed certification documents" width="1920" height="320" loading="eager">
             </div>
           </figure>
           <figure class="proof-band">
             <figcaption><span>02 / Global exhibitions</span><strong>Meeting partners, presenting samples and learning from the market</strong></figcaption>
             <div class="proof-image-scroller" tabindex="0" aria-label="Scroll to inspect Daxiong Pack exhibition photographs">
-              <img :src="assetUrl('/media/exhibition-wide.jpg')" alt="Daxiong Pack team meeting customers at international packaging exhibitions" width="1920" height="320" loading="eager" fetchpriority="low">
+              <img :src="assetUrl('/media/exhibition-wide.jpg')" alt="Daxiong Pack team meeting customers at international packaging exhibitions" width="1920" height="320" loading="eager">
             </div>
           </figure>
         </div>
