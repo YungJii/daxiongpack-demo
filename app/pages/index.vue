@@ -16,25 +16,39 @@ usePageSeo({
 });
 
 const heroVideo = ref<HTMLVideoElement | null>(null);
+const heroSection = ref<HTMLElement | null>(null);
 const muted = ref(true);
 const playing = ref(false);
 const assetUrl = useAssetUrl();
 let autoplayTimer: ReturnType<typeof setTimeout> | undefined;
+let heroObserver: IntersectionObserver | undefined;
 
 onMounted(() => {
-  autoplayTimer = window.setTimeout(async () => {
-    if (!heroVideo.value || playing.value) return;
-    try {
-      await heroVideo.value.play();
-      playing.value = true;
-    } catch {
+  heroObserver = new IntersectionObserver(([entry]) => {
+    if (entry?.isIntersecting) {
+      autoplayTimer = window.setTimeout(async () => {
+        if (!heroVideo.value || playing.value) return;
+        try {
+          await heroVideo.value.play();
+          playing.value = true;
+        } catch {
+          playing.value = false;
+        }
+      }, 700);
+    } else {
+      if (autoplayTimer) window.clearTimeout(autoplayTimer);
+      autoplayTimer = undefined;
+      heroVideo.value?.pause();
       playing.value = false;
     }
-  }, 700);
+  }, { threshold: 0.25 });
+
+  if (heroSection.value) heroObserver.observe(heroSection.value);
 });
 
 onBeforeUnmount(() => {
   if (autoplayTimer) window.clearTimeout(autoplayTimer);
+  heroObserver?.disconnect();
 });
 
 function toggleMute() {
@@ -57,7 +71,7 @@ async function togglePlay() {
 
 <template>
   <main id="top">
-    <section class="home-hero">
+    <section ref="heroSection" class="home-hero">
       <video ref="heroVideo" class="home-hero-video" preload="metadata" muted loop playsinline :poster="assetUrl('/media/printing.png')">
         <source :src="assetUrl('/media/factory-tour.mp4')" type="video/mp4">
       </video>
