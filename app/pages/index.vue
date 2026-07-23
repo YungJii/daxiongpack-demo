@@ -109,6 +109,19 @@ async function togglePlay() {
       </div>
     </section>
 
+    <section id="facilities" class="section facility-tour-section">
+      <div class="shell">
+        <div class="section-intro">
+          <div><p class="section-kicker">Real facilities, real process</p><h2>See where your packaging takes shape.</h2></div>
+          <div class="section-intro-copy">
+            <p>Step inside the spaces behind each project: from early artwork and samples to printing, pouch conversion and final quality checks.</p>
+            <p class="section-note">Select a stage to inspect the original factory photography.</p>
+          </div>
+        </div>
+        <FacilityGallery />
+      </div>
+    </section>
+
     <section class="section home-about-section">
       <div class="shell home-about-grid">
         <div class="home-about-copy">
@@ -121,6 +134,33 @@ async function togglePlay() {
           <img :src="assetUrl('/media/factory.png')" alt="Daxiong Color Printing factory in Chaozhou" width="1245" height="826" loading="lazy">
           <figcaption><span>Chaozhou, Guangdong</span><span>30+ years in flexible packaging</span></figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section id="proof" class="section proof-section">
+      <div class="shell">
+        <div class="section-intro compact-intro">
+          <div><p class="section-kicker">Proof in practice</p><h2>Standards on paper. Partnerships in person.</h2></div>
+          <p>Certifications support product confidence, while exhibitions and customer meetings keep the work grounded in real markets and real conversations.</p>
+        </div>
+        <div class="proof-bands">
+          <figure class="proof-band">
+            <figcaption><span>01 / Quality assurance</span><strong>Business licence, food-contact, ISO and intellectual property documentation</strong></figcaption>
+            <div class="proof-image-scroller" tabindex="0" aria-label="Scroll to inspect Daxiong Pack certificates">
+              <img :src="assetUrl('/media/certifications-wide.jpg')" alt="Daxiong Pack quality commitments and framed certification documents" width="1920" height="320" loading="lazy">
+            </div>
+          </figure>
+          <figure class="proof-band">
+            <figcaption><span>02 / Global exhibitions</span><strong>Meeting partners, presenting samples and learning from the market</strong></figcaption>
+            <div class="proof-image-scroller" tabindex="0" aria-label="Scroll to inspect Daxiong Pack exhibition photographs">
+              <img :src="assetUrl('/media/exhibition-wide.jpg')" alt="Daxiong Pack team meeting customers at international packaging exhibitions" width="1920" height="320" loading="lazy">
+            </div>
+          </figure>
+        </div>
+        <div class="proof-footnote">
+          <span>Original Daxiong Pack company photography</span>
+          <NuxtLink class="text-link" to="/aboutus.html">Company profile <ArrowRight :size="16" /></NuxtLink>
+        </div>
       </div>
     </section>
 
