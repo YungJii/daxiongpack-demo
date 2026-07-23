@@ -114,7 +114,7 @@ const assetUrl = useAssetUrl();
         aria-controls="facility-panel"
         @click="activeIndex = index"
       >
-        <img :src="assetUrl(facility.image)" alt="" width="1200" height="750" loading="lazy">
+        <img :src="assetUrl(facility.image)" alt="" width="1200" height="750" decoding="async">
         <span><small>{{ String(index + 1).padStart(2, '0') }}</small>{{ facility.shortTitle }}</span>
         <component :is="facility.icon" :size="17" stroke-width="1.7" aria-hidden="true" />
       </button>
