@@ -17,8 +17,25 @@ usePageSeo({
 
 const heroVideo = ref<HTMLVideoElement | null>(null);
 const muted = ref(true);
-const playing = ref(true);
+const playing = ref(false);
 const assetUrl = useAssetUrl();
+let autoplayTimer: ReturnType<typeof setTimeout> | undefined;
+
+onMounted(() => {
+  autoplayTimer = window.setTimeout(async () => {
+    if (!heroVideo.value || playing.value) return;
+    try {
+      await heroVideo.value.play();
+      playing.value = true;
+    } catch {
+      playing.value = false;
+    }
+  }, 700);
+});
+
+onBeforeUnmount(() => {
+  if (autoplayTimer) window.clearTimeout(autoplayTimer);
+});
 
 function toggleMute() {
   if (!heroVideo.value) return;
@@ -41,7 +58,7 @@ async function togglePlay() {
 <template>
   <main id="top">
     <section class="home-hero">
-      <video ref="heroVideo" class="home-hero-video" autoplay muted loop playsinline :poster="assetUrl('/media/printing.png')">
+      <video ref="heroVideo" class="home-hero-video" preload="metadata" muted loop playsinline :poster="assetUrl('/media/printing.png')">
         <source :src="assetUrl('/media/factory-tour.mp4')" type="video/mp4">
       </video>
       <div class="home-hero-shade"></div>
