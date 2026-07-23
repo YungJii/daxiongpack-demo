@@ -15,6 +15,7 @@ const facilities = [
     shortTitle: 'Our team',
     tag: 'From idea to artwork',
     image: '/media/facility-team.jpg',
+    thumbnail: '/media/facility-team-thumb.jpg',
     alt: 'Daxiong Pack creative and sales team working in the office',
     description: 'Packaging specialists coordinate structure, artwork and production requirements before a job enters the factory.',
     icon: Users,
@@ -24,6 +25,7 @@ const facilities = [
     shortTitle: 'Sample room',
     tag: 'Formats you can inspect',
     image: '/media/facility-sample-room.jpg',
+    thumbnail: '/media/facility-sample-room-thumb.jpg',
     alt: 'Finished flexible packaging samples displayed in the Daxiong sample room',
     description: 'Finished formats, materials and surface treatments are kept on hand to make early-stage decisions more tangible.',
     icon: PackageOpen,
@@ -33,6 +35,7 @@ const facilities = [
     shortTitle: 'Printing',
     tag: 'Controlled colour reproduction',
     image: '/media/facility-printing-line.jpg',
+    thumbnail: '/media/facility-printing-line-thumb.jpg',
     alt: 'Daxiong Pack gravure printing line in production',
     description: 'High-speed equipment supports repeatable colour, detailed graphics and consistent output across longer runs.',
     icon: Printer,
@@ -42,6 +45,7 @@ const facilities = [
     shortTitle: 'Bag making',
     tag: 'Multiple pouch formats',
     image: '/media/facility-bag-making.jpg',
+    thumbnail: '/media/facility-bag-making-thumb.jpg',
     alt: 'Rows of flexible packaging bag-making machines at Daxiong Pack',
     description: 'A coordinated bank of machines converts printed material into flat-bottom, stand-up and other pouch formats.',
     icon: Factory,
@@ -51,6 +55,7 @@ const facilities = [
     shortTitle: 'Tensile test',
     tag: 'Material strength checks',
     image: '/media/facility-tensile-testing.jpg',
+    thumbnail: '/media/facility-tensile-testing-thumb.jpg',
     alt: 'Tensile testing equipment used for flexible packaging quality checks',
     description: 'Film and seal strength are measured before finished packaging is cleared for packing and delivery.',
     icon: Activity,
@@ -60,6 +65,7 @@ const facilities = [
     shortTitle: 'Leak test',
     tag: 'Seal integrity checks',
     image: '/media/facility-leak-testing.jpg',
+    thumbnail: '/media/facility-leak-testing-thumb.jpg',
     alt: 'Leakage testing equipment in the Daxiong Pack quality laboratory',
     description: 'Seal integrity checks help confirm that a pouch can protect its contents through filling, transport and storage.',
     icon: FlaskConical,
@@ -84,9 +90,9 @@ const assetUrl = useAssetUrl();
           :key="activeFacility.image"
           :src="assetUrl(activeFacility.image)"
           :alt="activeFacility.alt"
-          width="1200"
-          height="750"
-          loading="lazy"
+          width="960"
+          height="600"
+          decoding="async"
         >
         <span>{{ String(activeIndex + 1).padStart(2, '0') }} / {{ String(facilities.length).padStart(2, '0') }}</span>
       </div>
@@ -114,7 +120,7 @@ const assetUrl = useAssetUrl();
         aria-controls="facility-panel"
         @click="activeIndex = index"
       >
-        <img :src="assetUrl(facility.image)" alt="" width="1200" height="750" decoding="async">
+        <img :src="assetUrl(facility.thumbnail)" alt="" width="360" height="225" decoding="async">
         <span><small>{{ String(index + 1).padStart(2, '0') }}</small>{{ facility.shortTitle }}</span>
         <component :is="facility.icon" :size="17" stroke-width="1.7" aria-hidden="true" />
       </button>
